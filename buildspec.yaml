@@ -5,6 +5,3 @@ phases:
       - composer install
   build:
     commands:
-      - phpunit tests
-      - npm install
-      - npm run production
