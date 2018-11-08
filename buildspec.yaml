@@ -5,6 +5,6 @@ phases:
      
   build:
     commands:
-  artifacts:
-    files:
-      - build/**/*
+artifacts:
+  files:
+    - build/**/*
