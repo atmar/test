@@ -11,7 +11,9 @@ phases:
   post_build:
     commands:
      - docker push "$IMAGE_URI" 
-     - printf '[{"name":"laravel","imageUri":"%s"}]' "$IMAGE_URI" > images.json
+     - composer install
+     - npm install
+     - npm run production 
 artifacts:
   files: 
    -'**/*'
