@@ -8,7 +8,7 @@ phases:
   build:
     commands:
      - docker build --tag "$IMAGE_URI" .
-  post-build:
+  post_build:
     commands:
      - docker push "$IMAGE_URI"
      - printf '[{"name":"laravel","imageUri":"%s"}]' "$IMAGE_URI" > images.json
