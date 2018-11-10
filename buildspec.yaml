@@ -6,7 +6,7 @@ phases:
     commands:
      - composer install
   post_build:
-    commands:
+    commands: 
 artifacts:
   files:
    - '**/*'
