@@ -12,5 +12,5 @@ phases:
     commands:
      - docker push "$IMAGE_URI" 
 artifacts:
-  files: 
+  files:
    - '**/*'
