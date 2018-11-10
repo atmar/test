@@ -29,8 +29,7 @@
       "mountPoints": [
         {
           "sourceVolume": "php-app",
-          "containerPath": "/var/www",
-          "readOnly": true
+          "containerPath": "/var/www"
         }
       ]
     },
