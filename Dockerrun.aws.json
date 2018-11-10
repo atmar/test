@@ -4,7 +4,7 @@
     {
       "name": "php-app",
       "host": {
-        "sourcePath": "/var/app/current/web"
+        "sourcePath": "/var/app/current"
       }
     },
     {
@@ -12,19 +12,25 @@
       "host": {
         "sourcePath": "/var/app/current/proxy/conf.d"
       }
-    }  
+    }
   ],
   "containerDefinitions": [
     {
       "name": "php-app",
-      "image": "772389862602.dkr.ecr.us-west-2.amazonaws.com/test",
+      "image": "772389862602.dkr.ecr.us-west-2.amazonaws.com/php",
+      "environment": [
+        {
+          "name": "Container",
+          "value": "PHP"
+        }
+      ],
       "essential": true,
       "memory": 128,
       "mountPoints": [
         {
           "sourceVolume": "php-app",
           "containerPath": "/var/www",
-          "readOnly": false
+          "readOnly": true
         }
       ]
     },
@@ -35,23 +41,27 @@
       "memory": 128,
       "portMappings": [
         {
-          "hostPort": 8080,
+          "hostPort": 80,
           "containerPort": 80
         }
       ],
       "links": [
         "php-app"
       ],
-	  "volumesFrom": [
-	  {
-	  "sourceContainer": "php-app"
-	  }
-	  ]
       "mountPoints": [
+        {
+          "sourceVolume": "php-app",
+          "containerPath": "/var/www",
+          "readOnly": true
+        },
         {
           "sourceVolume": "nginx-proxy-conf",
           "containerPath": "/etc/nginx/conf.d",
           "readOnly": true
+        },
+        {
+          "sourceVolume": "awseb-logs-nginx-proxy",
+          "containerPath": "/var/log/nginx"
         }
       ]
     }
