@@ -11,9 +11,6 @@ phases:
   post_build:
     commands:
      - docker push "$IMAGE_URI" 
-     - composer install
-     - npm install
-     - npm run production 
 artifacts:
   files: 
-   -'**/*'
+   - '**/*'

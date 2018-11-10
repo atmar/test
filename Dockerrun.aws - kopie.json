@@ -35,19 +35,22 @@
       "memory": 128,
       "portMappings": [
         {
-          "hostPort": 8080,
+          "hostPort": 80,
           "containerPort": 80
         }
       ],
       "links": [
         "php-app"
       ],
-	  "volumesFrom": [
-	  {
-	  "sourceContainer": "php-app"
-	  }
-	  ]
       "mountPoints": [
+        {
+          "sourceVolume": "php-app",
+          "containerPath": "/var/www"
+        },
+        {
+          "sourceVolume": "awseb-logs-nginx-proxy",
+          "containerPath": "/var/log/nginx"
+        },
         {
           "sourceVolume": "nginx-proxy-conf",
           "containerPath": "/etc/nginx/conf.d",
